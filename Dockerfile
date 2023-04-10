@@ -9,7 +9,7 @@
 # Setting up
 FROM ubuntu:20.04 AS builder
 ENV DEBIAN_FRONTEND noninteractive
-WORKDIR /conjure/
+WORKDIR /conjure
 
 # All binaries will end up in /root/.local/bin
 RUN mkdir -p /root/.local/bin
@@ -69,6 +69,10 @@ RUN du -sh /root/.local/bin
 
 FROM alpine:3.17
 WORKDIR /conjure
+
+RUN apk update
+RUN apk add --no-cache bash
+
 ENV PATH /root/.local/bin:$PATH
 RUN mkdir -p /root/.local/bin/lib
 COPY --from=builder /root/.local/bin /root/.local/bin
