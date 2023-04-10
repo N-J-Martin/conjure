@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 
 rm -rf tmp-install-z3
@@ -24,8 +24,8 @@ PYTHON=`command -v python 2> /dev/null || true`
 PYTHON=${PYTHON:-python3}
 $PYTHON scripts/mk_make.py --prefix=${BIN_DIR}
 cd build
-make -j${PROCESSES}
-make -j${PROCESSES} install
+make -j${CORES}
+make -j${CORES} install
 cp ${BIN_DIR}/bin/z3 ${BIN_DIR}
 echo "z3 executable is at ${BIN_DIR}/z3"
 ls -l ${BIN_DIR}/z3

@@ -42,11 +42,11 @@ Installation is known to work with
 
 In addition, a number of supported backend solvers can be compiled using the `make solvers` target.
 This target also takes a BIN_DIR environment variable to control the location of the solver executables,
-and a PROCESSES environment variable to control how many processes to use when building solvers
+and a CORES environment variable to control how many processes to use when building solvers
 
 .. code-block:: bash
 
-    BIN_DIR=/somewhere/in/your/path PROCESSES=4 make solvers
+    BIN_DIR=/somewhere/in/your/path CORES=4 make solvers
 
 Installing Savile Row
 ---------------------

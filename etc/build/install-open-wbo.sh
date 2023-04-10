@@ -7,7 +7,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 # we will add these to the path, just in case the user is using a homebrew installed gmp
 export C_INCLUDE_PATH=${C_INCLUDE_PATH:-} # initialise if undefined
@@ -23,7 +23,7 @@ pushd tmp-install-open-wbo
 git clone https://github.com/sat-group/open-wbo.git
 cd open-wbo
 git checkout $VERSION
-make -j${PROCESSES} r
+make -j${CORES} r
 cp open-wbo_release ${BIN_DIR}/open-wbo
 echo "open-wbo executable is at ${BIN_DIR}/open-wbo"
 ls -l ${BIN_DIR}/open-wbo

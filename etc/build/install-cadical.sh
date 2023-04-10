@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 
 rm -rf tmp-install-cadical
@@ -22,7 +22,7 @@ download https://github.com/arminbiere/cadical/archive/rel-$VERSION.tar.gz
 tar xzf rel-$VERSION.tar.gz
 cd cadical-rel-$VERSION
 ./configure
-make -j${PROCESSES}
+make -j${CORES}
 mkdir -p ${BIN_DIR}
 cp build/cadical ${BIN_DIR}/cadical
 echo "cadical executable is at ${BIN_DIR}/cadical"

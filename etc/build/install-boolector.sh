@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 
 rm -rf tmp-install-boolector
@@ -22,7 +22,7 @@ tar xzf $VERSION.tar.gz
 cd boolector-$VERSION
 ./contrib/setup-cadical.sh
 ./contrib/setup-btor2tools.sh
-./configure.sh && cd build && make -j${PROCESSES}
+./configure.sh && cd build && make -j${CORES}
 cp bin/boolector ${BIN_DIR}
 echo "boolector executable is at ${BIN_DIR}/boolector"
 ls -l ${BIN_DIR}/boolector

@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 
 rm -rf tmp-install-glucose
@@ -22,14 +22,14 @@ unzip glucose-$VERSION.zip
 cd glucose-$VERSION/sources
 (
     cd simp
-    make -j${PROCESSES} r
+    make -j${CORES} r
     cp glucose_release ${BIN_DIR}/glucose
     echo "glucose executable is at ${BIN_DIR}/glucose"
     ls -l ${BIN_DIR}/glucose
 )
 (
     cd parallel
-    make -j${PROCESSES} r
+    make -j${CORES} r
     cp glucose-syrup_release ${BIN_DIR}/glucose-syrup
     echo "glucose-syrup executable is at ${BIN_DIR}/glucose-syrup"
     ls -l ${BIN_DIR}/glucose-syrup

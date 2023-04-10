@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 
 rm -rf tmp-install-lingeling
@@ -22,7 +22,7 @@ tar xzf lingeling-$VERSION.tar.gz
 rm -f lingeling-$VERSION.tar.gz
 cd lingeling-$VERSION
 ./configure.sh
-make -j${PROCESSES}
+make -j${CORES}
 mkdir -p ${BIN_DIR}
 cp lingeling ${BIN_DIR}/lingeling
 cp plingeling ${BIN_DIR}/plingeling

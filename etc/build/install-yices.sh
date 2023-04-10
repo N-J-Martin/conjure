@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 export BIN_DIR=${BIN_DIR:-${HOME}/.local/bin}
-export PROCESSES=${PROCESSES:-1}
+export CORES=${CORES:-1}
 
 # we will add these to the path, just in case the user is using a homebrew installed gmp
 export C_INCLUDE_PATH=${C_INCLUDE_PATH:-} # initialise if undefined
@@ -29,8 +29,8 @@ tar xzf Yices-$VERSION.tar.gz
 cd yices2-Yices-$VERSION/
 autoconf
 ./configure --prefix ${BIN_DIR}
-make -j${PROCESSES}
-make -j${PROCESSES} install
+make -j${CORES}
+make -j${CORES} install
 cp ${BIN_DIR}/bin/yices* ${BIN_DIR}
 echo "yices executables are at ${BIN_DIR}/yices*"
 ls -l ${BIN_DIR}/yices*
